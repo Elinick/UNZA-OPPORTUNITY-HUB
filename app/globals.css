@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Dark mode is switched by adding the "dark" class to <html> (next-themes does this). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   DESIGN TOKENS
+   Single source of truth for colours. Change them here, not in components.
+   ------------------------------------------------------------------ */
+:root {
+  --background: #f6f7f4; /* page background */
+  --card: #ffffff; /* cards and panels */
+  --ink: #0e1f18; /* main text */
+  --muted: #4b5a52; /* secondary text */
+  --line: #dfe5df; /* borders */
+  --primary: #0f5c3f; /* main green, primary actions */
+  --primary-ink: #ffffff; /* text on top of primary */
+  --warning: #8a5a00; /* "Closing soon" and "Not yet verified" text */
+  --warning-bg: #fff3d6;
+  --radius-card: 14px;
+}
+
+.dark {
+  --background: #0b1511;
+  --card: #12211a;
+  --ink: #eaf1ec;
+  --muted: #a3b3aa;
+  --line: #24382e;
+  --primary: #3fae83;
+  --primary-ink: #04150d;
+  --warning: #f2c261;
+  --warning-bg: #3a2c0a;
+}
+
+/* Tell Tailwind about the tokens so classes like bg-primary and text-muted work. */
+@theme inline {
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --radius-card: var(--radius-card);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Visible keyboard focus everywhere (accessibility rule from the blueprint). */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
